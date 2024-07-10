@@ -1,0 +1,86 @@
+### Server
+GET /
+host: localhost:8080
+
+### Register
+POST /api/user/register HTTP/1.1
+host: localhost:8080
+Content-Type: application/json
+...
+
+{
+  "login": "login",
+  "password": "password"
+}
+
+### Login (valid)
+POST /api/user/login HTTP/1.1
+host: localhost:8080
+Content-Type: application/json
+...
+
+{
+  "login": "login",
+  "password": "password"
+}
+
+### Login (invalid)
+POST /api/user/login HTTP/1.1
+host: localhost:8080
+Content-Type: application/json
+...
+
+{
+  "login": "login",
+  "password": "pwd"
+}
+
+### place order
+POST /api/user/orders
+host: localhost:8080
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJsb2dpbiI6ImxvZ2luIiwiZXhwIjoxNzIwMTAxNTQ1fQ.o0-a8w6TsGcn6NUf3c0ZpAvRHZfqn1DlEKybmL8v5RU
+...
+
+12345678903
+
+### get orders
+GET /api/user/orders
+host: localhost:8080
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJsb2dpbiI6ImxvZ2luIiwiZXhwIjoxNzIwMTAxNTQ1fQ.o0-a8w6TsGcn6NUf3c0ZpAvRHZfqn1DlEKybmL8v5RU
+
+### get balance
+GET /api/user/balance
+host: localhost:8080
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJsb2dpbiI6ImxvZ2luIiwiZXhwIjoxNzIwMTAxNTQ1fQ.o0-a8w6TsGcn6NUf3c0ZpAvRHZfqn1DlEKybmL8v5RU
+
+### ok withdraw
+POST /api/user/balance/withdraw
+host: localhost:8080
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJsb2dpbiI6ImxvZ2luIiwiZXhwIjoxNzIwMTAzNjc5fQ.9r-9baslOCAiqNOVIpMeYH4gZ2hcQdih41H5fR65XA8
+
+{
+  "order": "2377225624",
+  "sum": 75
+}
+
+### not enough balance withdraw
+POST /api/user/balance/withdraw
+host: localhost:8080
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJsb2dpbiI6ImxvZ2luIiwiZXhwIjoxNzIwMTAzNjc5fQ.9r-9baslOCAiqNOVIpMeYH4gZ2hcQdih41H5fR65XA8
+
+{
+  "order": "2377225624",
+  "sum": 751345
+}
+
+
+### получение withdrawls
+GET /api/user/withdrawals
+host: localhost:8080
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJsb2dpbiI6ImxvZ2luIiwiZXhwIjoxNzIwMTAzNjc5fQ.9r-9baslOCAiqNOVIpMeYH4gZ2hcQdih41H5fR65XA8
